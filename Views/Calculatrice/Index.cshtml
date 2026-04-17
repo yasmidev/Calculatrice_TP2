@@ -1,0 +1,171 @@
+﻿@model Calculatrice_TP2.ViewModels.CalculatriceViewModel
+
+@{
+    ViewData["Title"] = "Calculatrice";
+}
+
+
+<form asp-action="Calculer" method="post" class="page-calculator">
+    <section class="calculator-card">
+
+        <input asp-for="Expression" class="calculator-output" placeholder="(ax + b)"/>
+
+        <div class="calculator-keys">
+            <button type="button" class="calc-key clear">AC</button>
+            <button type="button" class="calc-key operator">(</button>
+            <button type="button" class="calc-key operator">)</button>
+            <button type="button" class="calc-key operator">^</button>
+
+            <button type="button" class="calc-key">7</button>
+            <button type="button" class="calc-key">8</button>
+            <button type="button" class="calc-key">9</button>
+            <button type="button" class="calc-key operator">÷</button>
+
+            <button type="button" class="calc-key">4</button>
+            <button type="button" class="calc-key">5</button>
+            <button type="button" class="calc-key">6</button>
+            <button type="button" class="calc-key operator">×</button>
+
+            <button type="button" class="calc-key">1</button>
+            <button type="button" class="calc-key">2</button>
+            <button type="button" class="calc-key">3</button>
+            <button type="button" class="calc-key operator">-</button>
+
+            <button type="button" class="calc-key zero">0</button>
+            <button type="button" class="calc-key">.</button>
+            <button type="button" class="calc-key operator">+</button>
+
+            <button type="submit" class="calc-key enter">=</button>
+        </div>
+
+
+        <button asp-controller="Calculatrice" asp-action="Historique" class="nav-btn"> Voir Historique </button>
+
+    </section>
+</form>
+
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+    }
+
+    .page-calculator {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .calculator-card {
+        width: 100%;
+        max-width: 380px;
+        background: white;
+        border: 1px solid #cfcfcf;
+        padding: 16px;
+        border-radius: 8px;
+    }
+
+    .calculator-output {
+        width: 100%;
+        min-height: 72px;
+        background: #111;
+        color: white;
+        padding: 12px;
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .calculator-keys {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+
+    .calc-key {
+        padding: 16px;
+        font-size: 1.1rem;
+        border: 1px solid #cfcfcf;
+        background: #e8e8e8;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+        .calc-key:hover {
+            background: #dcdcdc;
+        }
+
+    .operator {
+        background: #5e90cd;
+        font-weight: bold;
+    }
+
+    .clear {
+        background: #c4533d;
+        font-weight: bold;
+    }
+
+    .enter {
+        grid-column: span 4;
+        background: #333;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .zero {
+        grid-column: span 2;
+    }
+
+    @@media (max-width: 600px) {
+        .page-calculator {
+            padding: 12px;
+            align-items: flex-start;
+            padding-top: 24px;
+        }
+
+        .calculator-card {
+            max-width: 100%;
+            padding: 14px;
+        }
+
+        .calculator-output {
+            font-size: 1.5rem;
+            min-height: 64px;
+        }
+
+        .calc-key {
+            padding: 14px;
+            font-size: 1rem;
+        }
+    }
+
+
+    .nav-btn {
+        border: none;
+        outline: none;
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 14px;
+        background: #bbd3f3;
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        border-radius: 10px;
+    }
+
+        .nav-btn:hover {
+            background: #5e90cd;
+            color: white;
+        }
+</style>

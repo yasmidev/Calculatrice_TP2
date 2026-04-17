@@ -1,0 +1,132 @@
+﻿@model Calculatrice_TP2.ViewModels.CalculatriceViewModel
+
+@{
+    ViewData["Title"] = "Historique";
+}
+
+
+
+<div class="history-section">
+    <h2 class="history-title">Historique</h2>
+
+    <a asp-controller="Calculatrice" asp-action="Index" class="nav-btn">
+        Retour à la calculatrice
+    </a>
+
+    <div class="history-list">
+        @if (Model.Historique.Count == 0)
+        {
+            <div class="history-item">
+                <div class="history-equation">Aucun calcul dans l'historique.</div>
+            </div>
+        }
+        else
+        {
+            @foreach (var item in Model.Historique)
+            {
+                <div class="history-item">
+                    <div class="history-equation">@item.Equation</div>
+                    <div class="history-result">= @item.Resultat</div>
+                    <div class="history-date">@item.Date</div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+    }
+
+    .history-section {
+        width: 100%;
+        max-width: 700px;
+        margin: 40px auto;
+        background: white;
+        border: 1px solid #cfcfcf;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .history-title {
+        margin-top: 0;
+        margin-bottom: 15px;
+        text-align: center;
+        font-size: 1.8rem;
+    }
+
+    .history-list {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .history-item {
+        border: 1px solid #dcdcdc;
+        background: #f9f9f9;
+        padding: 14px;
+        border-radius: 8px;
+    }
+
+    .history-equation {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 6px;
+    }
+
+    .history-result {
+        font-size: 1rem;
+        color: #222;
+        margin-bottom: 4px;
+    }
+
+    .history-date {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .nav-btn {
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px 14px;
+        background: #bbd3f3;
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        border-radius: 10px;
+    }
+
+        .nav-btn:hover {
+            background: #5e90cd;
+            color: white;
+        }
+
+    @@media (max-width: 600px) {
+        .history-section {
+            margin: 20px 12px;
+            padding: 14px;
+        }
+
+        .history-title {
+            font-size: 1.5rem;
+        }
+
+        .history-item {
+            padding: 12px;
+        }
+
+        .history-equation {
+            font-size: 1rem;
+        }
+    }
+</style>
