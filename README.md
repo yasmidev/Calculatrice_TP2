@@ -1,11 +1,5 @@
 # Calculatrice Web (.NET MVC)
 
-## ---- Informations ----
-
-* Noms : Yasmina Cabrera, Jaynelle Latortue-Raymond, Gia Bao Duong Ngo
-* Matricule : 420-246-AH 
-
----
 
 ## ---- Description du projet ----
 
