@@ -1,13 +1,13 @@
 # Calculatrice Web (.NET MVC)
 
-## ---- Informations ----
+## Informations 
 
 * Noms : Yasmina Cabrera, Jaynelle Latortue-Raymond, Gia Bao Duong Ngo
 * Matricule : 420-246-AH 
 
 ---
 
-## ---- Description du projet ----
+## Description du projet 
 
 Ce projet est une application Web développée avec **ASP.NET Core MVC**.
 Elle permet de réaliser des calculs mathématiques simples et complexes, tout en conserv*ant un historique des opérations effectuées.
@@ -17,7 +17,7 @@ Le projet est basé sur le TP1 (application console), qui a été adapté en ver
 
 ---
 
-## ---- Technologies utilisées ----
+## Technologies utilisées 
 
 * C#
 * ASP.NET Core MVC (.NET) - important pour la structure du projet et la gestion des requêtes web
@@ -27,7 +27,7 @@ Le projet est basé sur le TP1 (application console), qui a été adapté en ver
 
 ---
 
-## ---- Fonctionnalités ----
+## Fonctionnalités
 
 * Calculs simples (+, -, *, /)
 * Calculs d’expressions complexes (parenthèses, puissances)
@@ -37,7 +37,7 @@ Le projet est basé sur le TP1 (application console), qui a été adapté en ver
 
 ---
 
-## ---- Structure du projet ----
+## Structure du projet
 
 * **Controllers** → gestion des requêtes web
 * **Models** → structure des données
@@ -49,7 +49,7 @@ Le projet est basé sur le TP1 (application console), qui a été adapté en ver
 
 ---
 
-## ---- TODO ----
+## TODO
 
 * [ ] Interface HTML + CSS (RESPONSIVE)
 * [ ] Créer le controller (Index, Calculer, Historique)

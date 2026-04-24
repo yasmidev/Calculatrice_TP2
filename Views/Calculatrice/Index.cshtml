@@ -11,7 +11,7 @@
         <input asp-for="Expression" class="calculator-output" placeholder="(ax + b)"/>
 
         <div class="calculator-keys">
-            <button type="button" class="calc-key clear">AC</button>
+            <button type="button" class="calc-clear"->AC</button>
             <button type="button" class="calc-key operator">(</button>
             <button type="button" class="calc-key operator">)</button>
             <button type="button" class="calc-key operator">^</button>
@@ -35,7 +35,8 @@
             <button type="button" class="calc-key">.</button>
             <button type="button" class="calc-key operator">+</button>
 
-            <button type="submit" class="calc-key enter">=</button>
+            <button type="submit" class="calc-enter">=</button>
+            <button type="button" class="calc-delete">delete</button>   
         </div>
 
 
@@ -77,12 +78,13 @@
         width: 100%;
         min-height: 72px;
         background: #111;
-        color: white;
+        color: #595858;
         padding: 12px;
         font-size: 1.8rem;
         margin-bottom: 12px;
         border: none;
         border-radius: 5px;
+        
     }
 
     .calculator-keys {
@@ -109,17 +111,29 @@
         font-weight: bold;
     }
 
-    .clear {
+    .calc-clear {
         background: #c4533d;
         font-weight: bold;
+        padding: 16px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        border-radius: 10px;
+        border: none;
     }
 
-    .enter {
-        grid-column: span 4;
+    .calc-enter {
+        grid-column: span 2;
         background: #333;
         color: white;
         font-weight: bold;
         font-size: 1.2rem;
+    }
+
+    .calc-delete {
+    grid-column: span 2;
+    background: #333;
+    color: white;
+    font-size: 1rem;
     }
 
     .zero {
@@ -169,3 +183,66 @@
             color: white;
         }
 </style>
+
+
+<script>
+    let expressionInput = document.querySelector('.calculator-output');
+    let calcKeys = document.querySelectorAll('.calc-key');
+    let clearKey = document.querySelector('.calc-clear');
+    let operatorKeys = document.querySelectorAll('.operator'); 
+    let enterKey = document.querySelector('.calc-enter');
+    let historiqueNav = document.querySelector('.nav-btn');
+    let deleteKey = document.querySelector(".calc-delete");
+
+
+
+    // --------------- AC button ---------------
+    function clearExpression() {
+        clearKey.addEventListener("click", () => {
+            expressionInput.value = '';
+        });
+    }
+
+    //  --------------- the result ---------------
+    function showResult() {
+        enterKey.addEventListener("click", () => {
+            // fait le calcul
+            
+        });
+    }
+
+    // --------------- insert numbers and operators ---------------
+    function insertCalculations() {
+        calcKeys.forEach(key => {
+            key.addEventListener("click", () => {
+                expressionInput.value += key.textContent;
+            });
+        });
+    }
+
+    // --------------- delete numbers and operators ------------------
+    
+    function deleteCalc() {
+        deleteKey.addEventListener("click", () => {
+            // enleve le truc 
+        });
+    }
+
+
+    // --------- pour montrer l'historique des calculs ----------------
+    function showHistorique() {
+        historiqueNav.addEventListener("click", () => {
+            // redirige vers l'historique
+        });
+    }
+
+    function initCalculator() {
+        insertCalculations();
+        clearExpression();
+        showResult();
+        deleteCalc();
+        showHistorique();
+    }
+
+    initCalculator();
+</script>

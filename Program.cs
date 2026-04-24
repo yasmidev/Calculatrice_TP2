@@ -1,12 +1,13 @@
 using Calculatrice_TP2.Data;
 using Calculatrice_TP2.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // MVC
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddOpenApi();
 // Base de données SQLite
 builder.Services.AddDbContext<CalculatriceContext>(options =>
     options.UseSqlite("Data Source=calculatrice.db"));
@@ -21,14 +22,14 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
+    app.MapOpenApi();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
+app.MapControllers();
 
 // Route MVC par défaut qui redirige vers le contrôleur Calculatrice et l'action Index si aucune route n'est spécifiée
 app.MapControllerRoute(

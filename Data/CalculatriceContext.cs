@@ -1,6 +1,7 @@
 ﻿using Calculatrice_TP2.Models;
 using Microsoft.EntityFrameworkCore;
 
+//database context
 namespace Calculatrice_TP2.Data
 {
     public class CalculatriceContext : DbContext
@@ -10,8 +11,9 @@ namespace Calculatrice_TP2.Data
         {
         }
 
-        public DbSet<Calcul> Calculs { get; set; }
+        public DbSet<Calcul> Calculs { get; set; } = null!;
 
+// seeding
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
