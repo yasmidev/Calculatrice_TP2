@@ -12,10 +12,12 @@ namespace Calculatrice_TP2.Controllers
     public class CalculatriceController : Controller
     {
         private readonly CalculatriceContext _context;
+        private readonly CalculService _service;
 
-        public CalculatriceController(CalculatriceContext context)
+        public CalculatriceController(CalculatriceContext context, CalculService service)
         {
             _context = context;
+            _service = service;
         }
 
         public IActionResult Index()
@@ -43,9 +45,10 @@ namespace Calculatrice_TP2.Controllers
         {
             try
             {
-                var service = new CalculService();
+                //var service = new CalculService();
+                //double resultat = service.CalculExpression(vm.Expression);
 
-                double resultat = service.CalculExpression(vm.Expression);
+                double resultat = _service.CalculExpression(vm.Expression);
 
                 vm.Resultat = resultat;
 

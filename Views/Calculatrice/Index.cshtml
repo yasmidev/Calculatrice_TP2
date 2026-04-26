@@ -10,8 +10,13 @@
 
         <input asp-for="Expression" class="calculator-output" placeholder="(ax + b)"/>
 
+        @if (Model.Resultat.HasValue)
+        {
+            <p>= @Model.Resultat</p>
+        }
+
         <div class="calculator-keys">
-            <button type="button" class="calc-clear"->AC</button>
+            <button type="button" class="calc-clear">AC</button>
             <button type="button" class="calc-key operator">(</button>
             <button type="button" class="calc-key operator">)</button>
             <button type="button" class="calc-key operator">^</button>
@@ -19,12 +24,12 @@
             <button type="button" class="calc-key">7</button>
             <button type="button" class="calc-key">8</button>
             <button type="button" class="calc-key">9</button>
-            <button type="button" class="calc-key operator">÷</button>
+            <button type="button" class="calc-key operator" data-value="/">÷</button>
 
             <button type="button" class="calc-key">4</button>
             <button type="button" class="calc-key">5</button>
             <button type="button" class="calc-key">6</button>
-            <button type="button" class="calc-key operator">×</button>
+            <button type="button" class="calc-key operator" data-value="*">×</button>
 
             <button type="button" class="calc-key">1</button>
             <button type="button" class="calc-key">2</button>
@@ -36,7 +41,7 @@
             <button type="button" class="calc-key operator">+</button>
 
             <button type="submit" class="calc-enter">=</button>
-            <button type="button" class="calc-delete">delete</button>   
+            <button type="button" class="calc-delete">delete</button>
         </div>
 
 
@@ -190,7 +195,7 @@
     let calcKeys = document.querySelectorAll('.calc-key');
     let clearKey = document.querySelector('.calc-clear');
     let operatorKeys = document.querySelectorAll('.operator'); 
-    let enterKey = document.querySelector('.calc-enter');
+//    let enterKey = document.querySelector('.calc-enter');
     let historiqueNav = document.querySelector('.nav-btn');
     let deleteKey = document.querySelector(".calc-delete");
 
@@ -205,17 +210,18 @@
 
     //  --------------- the result ---------------
     function showResult() {
-        enterKey.addEventListener("click", () => {
             // fait le calcul
-            
-        });
     }
 
     // --------------- insert numbers and operators ---------------
     function insertCalculations() {
         calcKeys.forEach(key => {
             key.addEventListener("click", () => {
-                expressionInput.value += key.textContent;
+                if (key.dataset.value) {
+                    expressionInput.value += key.dataset.value;
+                } else {
+                    expressionInput.value += key.textContent.trim();
+                }
             });
         });
     }
@@ -224,7 +230,7 @@
     
     function deleteCalc() {
         deleteKey.addEventListener("click", () => {
-            // enleve le truc 
+            expressionInput.value = expressionInput.value.slice(0, -1);
         });
     }
 
